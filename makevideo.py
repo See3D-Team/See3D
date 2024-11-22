@@ -77,46 +77,46 @@ import os
 #     os.system(f'ffmpeg -i {video_path} -c:v libx264 -crf 23 -preset medium {output_path}')
 
 #     print(f'Compressed video saved to: {output_path}')
-import os
-import subprocess
-from pathlib import Path
+# import os
+# import subprocess
+# from pathlib import Path
 
-def compress_videos(input_dir, output_dir, target_ratio=0.1):
-    """
-    Compress all videos in the input directory to the target size ratio
-    and save them to the output directory.
+# def compress_videos(input_dir, output_dir, target_ratio=0.1):
+#     """
+#     Compress all videos in the input directory to the target size ratio
+#     and save them to the output directory.
 
-    Args:
-        input_dir (str): Path to the input directory containing videos.
-        output_dir (str): Path to the output directory for compressed videos.
-        target_ratio (float): Target size ratio (e.g., 0.4 for 40%).
-    """
-    # Ensure output directory exists
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
+#     Args:
+#         input_dir (str): Path to the input directory containing videos.
+#         output_dir (str): Path to the output directory for compressed videos.
+#         target_ratio (float): Target size ratio (e.g., 0.4 for 40%).
+#     """
+#     # Ensure output directory exists
+#     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-    for root, _, files in os.walk(input_dir):
-        for file in files:
-            if file.endswith(('.mp4', '.avi', '.mkv', '.mov', '.flv', '.wmv')):
-                input_path = os.path.join(root, file)
-                output_path = os.path.join(output_dir, file)
+#     for root, _, files in os.walk(input_dir):
+#         for file in files:
+#             if file.endswith(('.mp4', '.avi', '.mkv', '.mov', '.flv', '.wmv')):
+#                 input_path = os.path.join(root, file)
+#                 output_path = os.path.join(output_dir, file)
 
-                # Get the original file size
-                original_size = os.path.getsize(input_path)
-                target_size = int(original_size * target_ratio)
+#                 # Get the original file size
+#                 original_size = os.path.getsize(input_path)
+#                 target_size = int(original_size * target_ratio)
 
-                # Use ffmpeg to compress the video
-                command = [
-                    "ffmpeg", "-i", input_path, "-vcodec", "libx264", "-crf", "23",
-                    "-fs", str(target_size), "-y", output_path
-                ]
+#                 # Use ffmpeg to compress the video
+#                 command = [
+#                     "ffmpeg", "-i", input_path, "-vcodec", "libx264", "-crf", "23",
+#                     "-fs", str(target_size), "-y", output_path
+#                 ]
 
-                print(f"Compressing: {input_path} -> {output_path}")
-                try:
-                    subprocess.run(command, check=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error compressing {input_path}: {e}")
+#                 print(f"Compressing: {input_path} -> {output_path}")
+#                 try:
+#                     subprocess.run(command, check=True)
+#                 except subprocess.CalledProcessError as e:
+#                     print(f"Error compressing {input_path}: {e}")
 
-if __name__ == "__main__":
-    input_folder = "/Users/gaohuachen/MyResources/research/see3d.github.io/static/videos/data_shu"
-    output_folder = "/Users/gaohuachen/MyResources/research/see3d.github.io/static/videos/data_shu_compressed"
-    compress_videos(input_folder, output_folder)
+# if __name__ == "__main__":
+#     input_folder = "/Users/gaohuachen/MyResources/research/see3d.github.io/static/videos/data_shu"
+#     output_folder = "/Users/gaohuachen/MyResources/research/see3d.github.io/static/videos/data_shu_compressed"
+#     compress_videos(input_folder, output_folder)
