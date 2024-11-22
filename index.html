@@ -143,7 +143,7 @@
         <source src="static/videos/teaser.mp4" type="video/mp4" />
       </video>
       <h2 class="subtitle has-text-justified">
-        <b>See3D</b>  is a novel visual conditional multi-view diffusion model trained on large-scale, unposed videos. It enables open-world 3D creation, including single-view-to-3D, sparse-view-to-3D, and 3D editing.  It can also be used for 3D Gaussian Splatting (3DGS) to extract meshes or render images.
+        <b>See3D</b>  is a novel visual conditional multi-view diffusion model trained on large-scale, unposed videos. It enables open-world 3D creation, including single-view-to-3D, sparse-views-to-3D, and 3D editing.  It can also be used for 3D Gaussian Splatting (3DGS) to extract meshes or render images.
       </h2>
     </div>
   </div>
@@ -160,7 +160,7 @@
           <div class="content has-text-justified">
             <img src="./static/images/teaser.jpg">
             <p>
-              Recent 3D generation models typically rely on limited-scale 3D `gold-labels' or  2D diffusion priors for 3D content creation. However, their performance is upper-bounded by constrained 3D priors due to the lack of scalable learning paradigms. In this work, we present <b>See3D</b>, a visual-conditional multi-view diffusion model trained on large-scale Internet videos for open-world 3D creation. The model aims to <b>Get</b> <b>3D</b> knowledge by solely <b>See</b>ing the visual contents from the vast and rapidly growing video data - <span style="color: #EB830C; font-weight: bolder;">You See it, You Got it</span>. To achieve this, we first scale up the training data using a proposed data curation pipeline that automatically filters out multi-view inconsistencies and insufficient observations from source videos. This results in a high-quality, richly diverse, large-scale dataset of multi-view images, termed WebVi3D, containing 320M frames from 16M video clips. Nevertheless, learning generic 3D priors from videos without explicit 3D geometry or camera pose annotations is nontrivial, and annotating poses for web-scale videos is prohibitively expensive. To eliminate the need for pose conditions, we introduce  an innovative  <i>visual-condition</i> - a purely 2D-inductive visual signal generated  by adding time-dependent noise to the masked video data. Finally, we introduce a novel visual-conditional 3D generation framework by integrating <b>See3D</b> into a warping-based pipeline for high-fidelity 3D generation. Our numerical and visual comparisons on single and sparse reconstruction benchmarks show that <b>See3D</b>, trained on cost-effective and scalable video data, achieves notable zero-shot and open-world generation capabilities, markedly outperforming models trained on costly and constrained 3D datasets. Additionally, our model naturally supports other image-conditioned 3D creation tasks, such as 3D editing, without further fine-tuning.
+              Recent 3D generation models typically rely on limited-scale 3D `gold-labels' or  2D diffusion priors for 3D content creation. However, their performance is upper-bounded by constrained 3D priors due to the lack of scalable learning paradigms. In this work, we present <b>See3D</b>, a visual-conditional multi-view diffusion model trained on large-scale Internet videos for open-world 3D creation. The model aims to <b>Get</b> <b>3D</b> knowledge by solely <b>See</b>ing the visual contents from the vast and rapidly growing video data - <span style="color: #EB830C; font-weight: bolder;">You See it, You Got it</span>. To achieve this, we first scale up the training data using a proposed data curation pipeline that automatically filters out multi-view inconsistencies and insufficient observations from source videos. This results in a high-quality, richly diverse, large-scale dataset of multi-view images, termed <span style="color:cornflowerblue; font-weight: bolder;">WebVi3D</span>, containing 320M frames from 16M video clips. Nevertheless, learning generic 3D priors from videos without explicit 3D geometry or camera pose annotations is nontrivial, and annotating poses for web-scale videos is prohibitively expensive. To eliminate the need for pose conditions, we introduce  an innovative  <i>visual-condition</i> - a purely 2D-inductive visual signal generated  by adding time-dependent noise to the masked video data. Finally, we introduce a novel visual-conditional 3D generation framework by integrating <b>See3D</b> into a warping-based pipeline for high-fidelity 3D generation. Our numerical and visual comparisons on single and sparse reconstruction benchmarks show that <b>See3D</b>, trained on cost-effective and scalable video data, achieves notable zero-shot and open-world generation capabilities, markedly outperforming models trained on costly and constrained 3D datasets. Additionally, our model naturally supports other image-conditioned 3D creation tasks, such as 3D editing, without further fine-tuning.
             </p>
           </div>
         </div>
@@ -180,9 +180,9 @@
           <div class="content has-text-justified">
             <img src="./static/images/method.jpg">
 
-            <p><strong>Overall Framework of See3D</strong>. (a) We propose a four-step data curation pipeline to select multi-view images from Internet videos, forming the WebVi3D dataset, which includes \(\sim\)16M video clips across  diverse categories and concepts. 
+            <p><strong>Overall Framework of See3D</strong>. (a) We propose a four-step data curation pipeline to select multi-view images from Internet videos, forming the <span style="color:cornflowerblue; font-weight: bolder;">WebVi3D</span> dataset, which includes \(\sim\)16M video clips across  diverse categories and concepts. 
               (b) Given multiple views, we corrupt the original data into corrupted images \(c_{t}^{i}\)
-              at timestep $t$ by applying random masks and time-dependent noise. We then reweight the guidance of  \(c_{t}^{i}\) and the noisy latent \(x_{t}^{i}\) for the diffusion model to form  <i>visual-condition</i> \(v_{t}^{i}\) through a time-dependent mixture. 
+              at timestep \(t\) by applying random masks and time-dependent noise. We then reweight the guidance of  \(c_{t}^{i}\) and the noisy latent \(x_{t}^{i}\) for the diffusion model to form  <i>visual-condition</i> \(v_{t}^{i}\) through a time-dependent mixture. 
               (c) MVD model is capable of training at scale to generate multi-view images conditioned on \(v_{t}^{i}\), without requiring pose annotations. Since \(v_{t}^{i}\) is a task-agnostic visual signal formed through time-dependent noise  and mixture,  it enables the trained model to robustly adapt to various  downstream tasks.
 
           </div>
@@ -197,7 +197,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Sparse Views Reconstruction Results of See3D</h2>
+          <h2 class="title is-3">Reconstruction Results with 3 Views Input</h2>
           <div class="content has-text-justified">
           </div>
         </div>
@@ -301,7 +301,7 @@
             </video>
           </div>
         </div>
-        <p>The results shown are rendered by 3D Gaussian Splatting, which is trained by multi-view generation from See3D with <strong> three sparse views as input</strong>.</p>
+        <p>The results shown are rendered by 3D Gaussian Splatting, which is trained by multi-view generation from See3D with <strong> three sparse views as input</strong>. More qualitative and quantitative results with 3, 6, 9 views input can be found at Supplementary Material. </p>
       </div>
     </div>
   </section>
@@ -311,7 +311,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Signle View Generation Results of See3D</h2>
+          <h2 class="title is-3">Reconstruction Results with Single View Input</h2>
           <div class="content has-text-justified">
           </div>
         </div>
@@ -322,55 +322,128 @@
     <div class="hero-body">
       <div class="container">
         <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-flower">
-            <video poster="" id="flower" autoplay controls muted loop playsinline height="100%">
+          <div class="item item-1">
+            <video poster="" id="1" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/single/118_13848_27594.mp4"
                       type="video/mp4">
             </video>
           </div>
-          <div class="item item-fortress">
-            <video poster="" id="fortress" autoplay controls muted loop playsinline height="100%">
+          <div class="item item-2">
+            <video poster="" id="2" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/single/147_16374_32167.mp4"
                       type="video/mp4">
             </video>
           </div>
-          <div class="item item-shiba">
-            <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+          <div class="item item-3">
+            <video poster="" id="3" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/single/167_18175_33897.mp4"
                       type="video/mp4">
             </video>
           </div>
-          <div class="item item-fullbody">
-            <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/single/188_20360_39345.mp4"
+          <div class="item item-4">
+            <video poster="" id="4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/188_20319_36755.mp4"
                       type="video/mp4">
             </video>
           </div>
-          <div class="item item-blueshirt">
-            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+          <div class="item item-5">
+            <video poster="" id="5" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/single/197_21239_42788.mp4"
                       type="video/mp4">
             </video>
           </div>
-          <div class="item item-blueshirt">
-            <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+          <div class="item item-6">
+            <video poster="" id="6" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/single/198_21296_42378.mp4"
                       type="video/mp4">
             </video>
-            <div class="item item-blueshirt">
-              <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+          </div>
+            <div class="item item-7">
+              <video poster="" id="7" autoplay controls muted loop playsinline height="100%">
                 <source src="./static/videos/single/201_21573_40063.mp4"
                         type="video/mp4">
               </video>
             </div>
-            <div class="item item-blueshirt">
-              <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <div class="item item-8">
+              <video poster="" id="8" autoplay controls muted loop playsinline height="100%">
                 <source src="./static/videos/single/247_26503_52258.mp4"
                         type="video/mp4">
               </video>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-1">
+            <video poster="" id="1" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/000db54a47bd43fe.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-2">
+            <video poster="" id="2" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/10c8e54590f715f7.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-3">
+            <video poster="" id="3" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/4dd21bf1c1565fe1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-4">
+            <video poster="" id="4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/5179e23afde37cfd.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-5">
+            <video poster="" id="5" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/568da5cf0bc3f974.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-6">
+            <video poster="" id="6" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/single/real10k-demo/924ccc02891cc7df.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+            <div class="item item-7">
+              <video poster="" id="7" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/single/real10k-demo/ab16cd8dac9091cd.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-8">
+              <video poster="" id="8" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/single/real10k-demo/c18ae4bd02a7a0bc.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-8">
+              <video poster="" id="8" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/single/real10k-demo/e7cb1f56ac69308a.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-8">
+              <video poster="" id="8" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/single/real10k-demo/ed01315968288adf.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <p>The results shown are derived directly from See3D with <strong> single view as input</strong>. The frist frame of the shown video is the reference view.</p>
+        </div>
+      </div>
+
       </div>
     </div>
   </section>
@@ -422,6 +495,7 @@
           </div>
 
         </div>
+        <p> The frist frame of the shown video is the reference view.</p>
       </div>
     </div>
   </section>
